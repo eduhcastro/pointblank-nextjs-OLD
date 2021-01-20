@@ -3,7 +3,7 @@ const PageGet = (e) =>  {
     var tarjetdata2 = e.target.dataset.targeta
     var classeatual = $('.string[data-target="'+tarjetdata2+'"]').attr('class')
     async function resolveAfter2Seconds(pagen) {
-          const res = await fetch('http://localhost:3000/api/ranking/individual?limit='+tarjetdata2+'')
+          const res = await fetch('/api/ranking/individual?limit='+tarjetdata2+'')
           const json = await res.json()
           return json[0]
     }

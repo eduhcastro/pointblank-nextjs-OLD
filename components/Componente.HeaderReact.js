@@ -15,7 +15,7 @@ class SecundList extends Component {
     });
   }
   async componentDidMount() {
-    const res = await fetch('http://localhost:3000/api/ranking/home')
+    const res = await fetch('/api/ranking/home')
     const json = await res.json()
     await this.setStateAsync({user: json[1].player_name, rank: json[1].rank, exp: json[1].exp, 
       user2: json[2].player_name, rank2: json[2].rank, exp2: json[2].exp,
@@ -67,7 +67,7 @@ class Individual extends Component {
     });
   }
   async componentDidMount() {
-    const res = await fetch('http://localhost:3000/api/ranking/home')
+    const res = await fetch('/api/ranking/home')
     const json = await res.json()
     await this.setStateAsync({user: json[0].player_name, rank: json[0].rank, exp: json[0].exp})
   }

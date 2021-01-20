@@ -8,7 +8,7 @@ class Load extends Component {
       });
     }
     async componentDidMount() {
-    const res = await fetch('http://localhost:3000/api/ranking/individual')
+    const res = await fetch('/api/ranking/individual')
     const json = await res.json()
     const result = await json
     await this.setStateAsync(result)
