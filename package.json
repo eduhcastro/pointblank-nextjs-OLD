@@ -4,7 +4,7 @@
   "private": true,
   "routes": [
     {
-      "src": "Accounts.json",
+      "src": "/Accounts.json",
       "dest": "/api/ranking/home"
     }
   ],
