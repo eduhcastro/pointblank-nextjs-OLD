@@ -2,8 +2,11 @@
   "name": "pbnext",
   "version": "0.1.0",
   "private": true,
-  "builds": [
-    { "source": "Accounts.json", "destination": "/api/ranking/" }
+  "routes": [
+    {
+      "src": "Accounts.json",
+      "dest": "/api/ranking/home"
+    }
   ],
   "scripts": {
     "dev": "next dev",
