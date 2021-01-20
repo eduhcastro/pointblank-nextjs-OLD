@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import {MyHeader,MyFooter,InfoLeft,MyMenu} from '../../styles/IN/Header.js'
-export default function Home() {
+import {MyHeader,MyFooter,InfoLeft,MyMenu} from '../../components/Componente.HeaderModules'
+export default function Clan() {
   return (
     <>
 
