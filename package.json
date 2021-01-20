@@ -1,0 +1,26 @@
+{
+  "name": "pbnext",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
+  "dependencies": {
+    "dgram": "^1.0.1",
+    "docker-compose": "^0.23.6",
+    "lowdb": "^1.0.0",
+    "next": "10.0.5",
+    "pg": "^8.5.1",
+    "pg-promise": "^10.9.0",
+    "pool": "^0.4.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  }
+}
