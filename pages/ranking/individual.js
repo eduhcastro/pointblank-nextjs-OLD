@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import {MyHeader,MyFooter,InfoLeft,MyMenu} from '../../components/Componente.HeaderModules'
 import {PageGet} from '../../components/Componente.RankModules'
-import {Load} from '../../components/Componente.Load'
-
+import {Load,CloseDiv} from '../../components/Componente.Load'
 export default function Individual() {
   return (
     <>
@@ -11,7 +10,7 @@ export default function Individual() {
     <div id="wrap">
       <div className="GNB">
         <div className="gnb_cont">
-      <p className="logo"><Link href="/"><a><img src="/Front/imgs/logo_gnb_pb.webp"/></a></Link></p>
+      <p className="logo"><Link href="/"><a><img src="/Front/Commom/logo_gnb_pb.png"/></a></Link></p>
       <script type="text/javascript" src="/Base/js/select_design.js"></script>
       <MyMenu/>
    </div>
@@ -19,6 +18,67 @@ export default function Individual() {
 </div>
 <div className="substance">
 		<InfoLeft/>
+    <div className="layer_popup">
+   <div className="layer_bg_dim"></div>
+   <div id="ranking_info" className="layer_pop_layout_w550">
+      <div className="pop_top">
+         <p className="tit" id="layer_Nickname"></p>
+         <p className="btn"><a href="#!" onClick={CloseDiv} className="close_btn"><img src="/Front/Commom/btn_close_pop.png"/></a></p>
+      </div>
+      <div className="pop_cont">
+         <table className="pop_board">
+            <colgroup>
+               <col style={{width:"160px"}}/>
+               <col style={{width:"auto"}}/>
+            </colgroup>
+            <thead>
+               <tr>
+                  <th colSpan="2" className="sub_stit">
+                     <p className="stit">Character</p>
+                  </th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td className="tit">XP</td>
+                  <td id="layer_UserExp"></td>
+               </tr>
+               <tr>
+                  <td className="tit">RANK</td>
+                  <td id="layer_UserRank"></td>
+               </tr>
+               <tr>
+                  <td className="tit">KDA</td>
+                  <td id="layer_WinRate"></td>
+               </tr>
+                </tbody>
+                <thead>
+                <tr>
+                    <th colSpan="2" className="sub_stit"><p className="stit">Game Info</p></th>
+                </tr>
+                </thead>
+                <tbody>
+               <tr>
+                  <td className="tit">KILL</td>
+                  <td id="layer_UserKill"></td>
+               </tr>
+               <tr>
+                  <td className="tit">DEATH</td>
+                  <td id="layer_UserDeath"></td>
+               </tr>
+               <tr>
+                  <td className="tit">WIN</td>
+                  <td id="layer_ClanName"></td>
+               </tr>
+               <tr>
+                  <td className="tit">LOSERS</td>
+                  <td id="layer_ClanName"></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
         <div className="contents">
         <div className="sub_title">Individual Ranking</div>
         	<div className="sub_contents_pnone">

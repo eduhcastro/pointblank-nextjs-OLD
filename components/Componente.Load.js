@@ -24,7 +24,12 @@ class Load extends Component {
     }
   }
 
-export {Load}
+  const CloseDiv = (e) =>  {
+    $('.layer_popup').fadeOut();
+}
+
+
+export {Load,CloseDiv}
 
 
 function NovoNumero(Nmb){
@@ -54,7 +59,7 @@ function Executar(Objetos){
     tpl +=      '<p class="rank_same"></p>';
     tpl +=    '</td>';
     tpl +=      '<td class="nick">';
-    tpl +=        '<a href="/asd">';
+    tpl +=        '<a href="#!" onClick="UserDetail(\''+player_name+'\')">';
     tpl +=          ''+player_name+'</a>';
     tpl +=       '</td>';
     tpl +=     '<td class="rank_class">';

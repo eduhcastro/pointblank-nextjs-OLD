@@ -9,7 +9,7 @@ export default function Clan() {
     <div id="wrap">
       <div className="GNB">
         <div className="gnb_cont">
-      <p className="logo"><Link href="/"><a><img src="/Front/imgs/logo_gnb_pb.webp"/></a></Link></p>
+      <p className="logo"><Link href="/"><a><img src="/Front/Commom/logo_gnb_pb.png"/></a></Link></p>
       <script type="text/javascript" src="/Base/js/select_design.js"></script>
       <MyMenu/>
    </div>

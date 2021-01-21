@@ -25,12 +25,13 @@ export default async (req, res) => {
             res.end();
         } else {
             (async () => {
+                res.setHeader('Cache-Control', 's-maxage=400, stale-while-revalidate')
                 res.status(200).json([query]);
                 res.end();
             })()
         }
     } else if (req.query.type === 'home') {
-      const query = db.get('AccountsPLayers').value().slice(0, 5)
+      const query = db.get('AccountsPLayers').slice(0, 5).value()
       if (query[0] == null) {
         res.status(200).json({
             result: 'end'
@@ -38,6 +39,7 @@ export default async (req, res) => {
         res.end();
     } else {
                 console.log('2')
+                res.setHeader('Cache-Control', 's-maxage=400, stale-while-revalidate')
                 res.status(200).json(query);
                 res.end();
     }} else {

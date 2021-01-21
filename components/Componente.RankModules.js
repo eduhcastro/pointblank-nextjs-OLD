@@ -39,7 +39,7 @@ const PageGet = (e) =>  {
       tpl +=      '<p class="rank_same"></p>';
       tpl +=    '</td>';
       tpl +=      '<td class="nick">';
-      tpl +=        '<a href="/asd">';
+      tpl +=        '<a href="#!" onClick="UserDetail(\''+player_name+'\')">';
       tpl +=          ''+player_name+'</a>';
       tpl +=       '</td>';
       tpl +=     '<td class="rank_class">';
@@ -104,4 +104,5 @@ const PageGet = (e) =>  {
 TabNow(tarjetdata2)
 }
   
+
 export {PageGet,TabShow}
