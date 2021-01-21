@@ -1,0 +1,8 @@
+const consta = [
+    { "name": "Alice Cooper", "username": "alice", "age": 21 },
+    { "name": "Bob Dylan", "username": "bob", "age": 53 },
+    { "name": "Jack Sparrow", "username": "jack", "age": 40 }
+  ]
+
+
+  export default consta
