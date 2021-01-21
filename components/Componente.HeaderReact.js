@@ -67,7 +67,7 @@ class Individual extends Component {
     });
   }
   async componentDidMount() {
-    const res = await fetch('http://localhost:3000/api/ranking/home')
+    const res = await fetch('/api/ranking/home')
     const json = await res.json()
     await this.setStateAsync({user: json[0].player_name, rank: json[0].rank, exp: json[0].exp})
   }
