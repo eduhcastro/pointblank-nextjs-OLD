@@ -27,8 +27,8 @@ export default async (req, res) => {
         res.end();
         return
     }
-    var PExp = query.exp
-    var PRank = query.rank
+    var PExp = query[0].exp
+    var PRank = query[0].rank
     res.status(200).json({
         success: true,
         data: {Rank: PRank, Exp: PExp, WinCnt: "0", LoseCnt: "1", WinRate: "0", KillCnt: "2", DeathCnt: "3"},
