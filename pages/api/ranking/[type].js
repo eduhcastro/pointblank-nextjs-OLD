@@ -1,5 +1,5 @@
-import db from '../DatabaseLow.js';
-
+import DatabaseOffline from '../../../components/Accounts.ts'
+const Formatado = DatabaseOffline;
 export const config = {
     api: {
         externalResolver: true,
@@ -16,7 +16,8 @@ export default async (req, res) => {
         } else {
             var limite2 = inicio - 20
         }
-        const query = db.get('AccountsPLayers').value().slice(limite2, inicio)
+
+        const query = Formatado.slice(limite2, inicio);
         console.log('0')
         if (query[0] == null) {
             res.status(200).json({
@@ -31,7 +32,7 @@ export default async (req, res) => {
             })()
         }
     } else if (req.query.type === 'home') {
-      const query = db.get('AccountsPLayers').slice(0, 5).value()
+        const query = Formatado.slice(0, 5);
       if (query[0] == null) {
         res.status(200).json({
             result: 'end'

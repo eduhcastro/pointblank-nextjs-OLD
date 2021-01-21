@@ -1,4 +1,4 @@
-import db from '../DatabaseLow.js';
+import DatabaseTs from '../../../components/Accounts.ts'
 export const config = {
     api: {
         externalResolver: true,
@@ -15,7 +15,9 @@ export default async (req, res) => {
         res.end();
         return
     }
-    const query = db.get('AccountsPLayers').find({player_name: user}).value()
+    const query = await DatabaseTs.filter(function(item){
+        return item.player_name == user;         
+    })
     if(query === undefined || query === null || query === ''){
         res.status(200).json({
             success: false,
