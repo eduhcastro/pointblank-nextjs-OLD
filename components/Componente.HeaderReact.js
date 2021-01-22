@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
-
+import DatabaseTs from './DataBase/Accounts.ts'
+import DatabaseClan from './DataBase/Clan.ts'
+DatabaseClan.sort(function (x, y) {
+  return y.clan_exp - x.clan_exp;
+})
+DatabaseTs.sort(function (x, y) {
+  return y.exp - x.exp;
+})
 function NovoNumero(Nmb){
   if(Nmb == null){
     return 0
@@ -8,82 +15,82 @@ function NovoNumero(Nmb){
 }
 
 class SecundList extends Component {
-  state = {}
-  setStateAsync(state) {
-    return new Promise((resolve) => {
-      this.setState(state, resolve)
-    });
-  }
-  async componentDidMount() {
-    const res = await fetch('/api/ranking/home')
-    const json = await res.json()
-    await this.setStateAsync({user: json[1].player_name, rank: json[1].rank, exp: json[1].exp, 
-      user2: json[2].player_name, rank2: json[2].rank, exp2: json[2].exp,
-      user3: json[3].player_name, rank3: json[3].rank, exp3: json[3].exp,
-      user4: json[4].player_name, rank4: json[4].rank, exp4: json[4].exp})
-  }
-  
   render() {
-    const userimg = '/Front/Rank/icon/'+this.state.rank+'.png'
-    const userimg2 = '/Front/Rank/icon/'+this.state.rank2+'.png'
-    const userimg3 = '/Front/Rank/icon/'+this.state.rank3+'.png'
-    const userimg4 = '/Front/Rank/icon/'+this.state.rank4+'.png'
+    const items = []
+    var IdUser = 0
+    const query = DatabaseTs.slice(1, 5);
+    query.map(function(item){
+      IdUser++
+      items.push(<p key={IdUser}><span className={OrdernandoClasse(IdUser)}>{item.player_name}</span><span className="exp"><img src={'/Front/Rank/icon/'+item.rank+'.png'}/> {NovoNumero(item.exp)}</span></p>) 
+    })
     return (<>
-    <p>
-      <span className="nick second">
-      {this.state.user || 'Unknown'}</span>
-           <span className="exp">
-       <img src={userimg || '/Front/Rank/icon/0.png'}/> {NovoNumero(this.state.exp) || 'Unknown'}
-     </span>
-     </p>
-     <p>
-       <span className="nick third">{this.state.user2 || 'Unknown'}</span>
-       <span className="exp">
-         <img src={userimg2 || '/Front/Rank/icon/0.png'}/> {NovoNumero(this.state.exp2) || 'Unknown'}
-		</span>
-	</p>
-    <p>
-      <span className="nick fourth">{this.state.user3 || 'Unknown'}</span>
-      <span className="exp">
-			<img src={userimg3 || '/Front/Rank/icon/0.png'}/> {NovoNumero(this.state.exp3) || 'Unknown'}
-			</span>
-		</p>
-		<p>
-			<span className="nick fifth">{this.state.user4 || 'Unknown'}</span>
-			<span className="exp">
-				<img src={userimg4 || '/Front/Rank/icon/0.png'}/> {NovoNumero(this.state.exp4) || 'Unknown'}
-				</span>
-			</p>
+    {items}
+</>
+     )
+  }
+}
+
+
+class SecundListClan extends Component {
+  render() {
+    const items = []
+    var IdUser = 0
+    const query = DatabaseClan.slice(1, 5);
+    query.map(function(item){
+      IdUser++
+      items.push(<p key={IdUser}><span className={OrdernandoClasse(IdUser)}>{item.clan_name}</span><span className="exp">{NovoNumero(item.clan_exp)}</span></p>) 
+    })
+    return (<>
+    {items}
 </>
      )
   }
 }
 
 class Individual extends Component {
-  state = {}
-  setStateAsync(state) {
-    return new Promise((resolve) => {
-      this.setState(state, resolve)
-    });
-  }
-  async componentDidMount() {
-    const res = await fetch('/api/ranking/home')
-    const json = await res.json()
-    await this.setStateAsync({user: json[0].player_name, rank: json[0].rank, exp: json[0].exp})
-  }
   render() {
-    const userimg = '/Front/Rank/icon/'+this.state.rank+'.png'
+    const query = DatabaseTs.slice(0, 1);
+    const items = []
+    query.map(function(item){
+      items.push(<p key="1"><span className="nick">{item.player_name}</span><span className="exp"><img src={'/Front/Rank/icon/'+item.rank+'.png'}/> {NovoNumero(item.exp)}</span></p>) 
+    })
     return (
-      <p>
-      <span className="nick second">{this.state.user || 'Unknown'}</span>
-      <span className="exp">
-          <img src={userimg  || '/Front/Rank/icon/0.png'}/>{NovoNumero(this.state.exp) || 'Unknown'}
-      </span>
-    </p>
+      <>
+   {items}
+   </>
+    );
+  }
+}
+
+class IndividualClan extends Component {
+  render() {
+    const query = DatabaseClan.slice(0, 1);
+    const items = []
+    query.map(function(item){
+      items.push( <div key="1" className="champion" id="RankList66"><p className="nick">{item.clan_name}</p><p className="rank">{item.clan_exp}</p></div>) 
+    })
+    return (
+      <>
+   {items}
+   </>
     );
   }
 }
 
 
-export {Individual, SecundList}
+function OrdernandoClasse(Obj){
+  switch (Obj){
+  case 1:
+    return 'nick second'
+   case 2:
+     return 'nick third'
+     case 3:
+       return 'nick fourth'
+       case 4:
+         return 'nick fifth'
+  }
+}
+
+
+export {Individual, SecundList, IndividualClan, SecundListClan}
 

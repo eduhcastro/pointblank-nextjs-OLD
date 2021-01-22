@@ -24,13 +24,35 @@ class Load extends Component {
     }
   }
 
+  class LoadClan extends Component {
+    state = {}
+    setStateAsync(state) {
+      return new Promise((resolve) => {
+        this.setState(state, resolve)
+      });
+    }
+    async componentDidMount() {
+    const res = await fetch('/api/ranking/clan')
+    const json = await res.json()
+    const result = await json
+    await this.setStateAsync(result)
+    }
+    render() {
+       if(this.state.length != 0){
+        const resultado = this.state
+        ExecutarClan(resultado)
+      }
+      return (
+      <tr style={{display : 'none'}}></tr>
+      );
+    }
+  }
+
   const CloseDiv = (e) =>  {
     $('.layer_popup').fadeOut();
 }
 
-
-export {Load,CloseDiv}
-
+export {Load,CloseDiv,LoadClan}
 
 function NovoNumero(Nmb){
   if(Nmb == null){
@@ -90,6 +112,67 @@ function Executar(Objetos){
   }
 }
 
+function ExecutarClan(Objetos){
+  var player = {
+  };
+  /**
+   *
+   * @param {string} player_name
+   * @param {number} rank
+   * @param {number} exp
+   */
+  
 
+  player.renderPrize = function (clan_name, clan_exp, ratewin, points, owner, id) {
+    if(clan_name.length > 0){
+      var tpl = "";
+      if(id == 1){
+     tpl +=   '<tr class="first">';
+     tpl +=   '<td class="rank">1';
+     tpl +=      '<p class="rank_same"></p>';
+     tpl +=      '<p></p>';
+     tpl +=   '</td>';
+     tpl +=   `<td class="nick">${clan_name}</td>`;
+     tpl +=   `<td class="master">${owner}</td>`;
+     tpl +=   `<td class="red">${clan_exp}</td>`;
+     tpl +=   `<td class="red">${ratewin}%</td>`;
+     tpl +=   `<td class="gray">${points}</td>`;
+     tpl +=   '</tr>';
+      }else{
+        tpl += '<tr>';
+        tpl += `<td class="rank">${id}`;
+        tpl += '<p class="rank_same"></p>';
+        tpl += '<p></p>';
+        tpl += '</td>';
+        tpl +=   `<td class="nick">${clan_name}</td>`;
+        tpl += `<td class="master">${owner}</td>`;
+        tpl += `<td class="red">${clan_exp}</td>`;
+        tpl += `<td class="red">${ratewin}%</td>`;
+        tpl += `<td class="gray">${points}</td>`;
+        tpl += '</tr>';
+      }
+    $("#rankinglistclan").append(tpl);
+  }
+  };
+  /**
+   * @param {Array} items
+   */
+  player.rank = function (items) {
+    var id = 1
+    items.map(function(item){
+      player.renderPrize(
+        item.clan_name,
+        item.clan_exp,
+        item.ratewin,
+        item.points,
+        item.dono,
+        id++
+    );
+  })};
+  if (Objetos[0] === undefined || Objetos[0].length == 0) {
+  }else{
+    player.rank((Objetos[0]));
+  }
+}
 
 

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import {TabShow} from '../components/Componente.RankModules'
-import {Individual, SecundList} from '../components/Componente.HeaderReact'
+import {Individual, SecundList, IndividualClan, SecundListClan} from '../components/Componente.HeaderReact'
 
 function MyHeader(){
     return <Head><meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -96,15 +96,9 @@ function InfoLeft(){
             <li className="tit_first"><a href="#!" data-tab="1" onClick={TabShow} className="btn">Individual</a></li>
             <li className="tit_last_on">Clan</li>
          </ul>
-         <div className="champion">
-            <p className="nick">ROKETLER´</p>
-            <p className="rank">1000.0</p>
-         </div>
+          <IndividualClan/>
          <div className="grade">
-            <p><span className="nick second">GameGraphicTr</span><span className="exp">1000.0</span></p>
-            <p><span className="nick third">|Reborn|</span><span className="exp">1000.0</span></p>
-            <p><span className="nick fourth">Punch-EX</span><span className="exp">1000.0</span></p>
-            <p><span className="nick fifth">FirstJustice</span><span className="exp">1000.0</span></p>
+		 <SecundListClan/>
          </div>
       </div>
    </div>
@@ -122,8 +116,9 @@ function MyMenu(){
 		  </ul>
 	   </li>
 	   <li className="menu">
-		  <p className="depth1_2nd"><a href="/guide/intro.do" className="depth1_on"><span>Guide</span></a></p>
+		  <p className="depth1_2nd"><a href="#!" className="depth1_on"><span>Guide</span></a></p>
 		  <ul className="depth2">
+		  <li><Link href="/start/intro"><a>Guide</a></Link></li>
 			 <li><Link href="/Guide/Install"><a>Install</a></Link></li>
 			 <li><Link href="/Guide/Character"><a>Create Account</a></Link></li>
 		  </ul>
@@ -134,14 +129,14 @@ function MyMenu(){
 		  </ul>
 	   </li>
 	   <li className="menu">
-		  <p className="depth1_4th"><a href="/ranking/individual/list.do" className="depth1_on"><span>Ranking</span></a></p>
+		  <p className="depth1_4th"><a href="#!" className="depth1_on"><span>Ranking</span></a></p>
 		  <ul className="depth2">
 			 <li><Link href="/ranking/individual"><a>Individual</a></Link></li>
 			 <li><Link href="/ranking/clan"><a>Clan</a></Link></li>
 		  </ul>
 	   </li>
 	   <li className="menu">
-		  <p className="depth1_6th"><a href="https://www.tamgame.com/support/customer/write.do" className="depth1_on"><span>Support</span></a></p>
+		  <p className="depth1_6th"><a href="https://www.facebook.com/eduhcm/" className="depth1_on" target="_blank"><span>Support</span></a></p>
 		  <ul className="depth2">
 		  </ul>
 	   </li>
