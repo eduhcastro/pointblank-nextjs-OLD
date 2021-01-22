@@ -1,4 +1,4 @@
-import DatabaseTs from '../../../components/Accounts.ts'
+import DatabaseTs from '../../../components/DataBase/Accounts.ts'
 export const config = {
     api: {
         externalResolver: true,
