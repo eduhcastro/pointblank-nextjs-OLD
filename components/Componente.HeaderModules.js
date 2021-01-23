@@ -131,7 +131,7 @@ function MyMenu(){
 	   <li className="menu">
 		  <p className="depth1_4th"><a href="#!" className="depth1_on"><span>Ranking</span></a></p>
 		  <ul className="depth2">
-			 <li><Link href="/ranking/individual"><a>Individual</a></Link></li>
+			 <li><Link href="/ranking/individualexp"><a>Individual</a></Link></li>
 			 <li><Link href="/ranking/clan"><a>Clan</a></Link></li>
 		  </ul>
 	   </li>
