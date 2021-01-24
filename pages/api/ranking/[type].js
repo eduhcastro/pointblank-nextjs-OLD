@@ -70,6 +70,26 @@ export default async (req, res) => {
     }
     if (req.query.type === 'matchs') {
         Formatado.sort(function (x, y) {
+            return y.headshots_count - x.headshots_count;
+          })
+        const query = Formatado.slice(limite2, inicio);
+        console.log('2')
+        if (query[0] == null) {
+            res.status(200).json({
+                result: 'end'
+            });
+            res.end();
+        } else {
+            (async () => {
+                res.setHeader('Cache-Control', 's-maxage=400, stale-while-revalidate')
+                res.status(200).json([query]);
+                res.end();
+            })()
+        }
+        return
+    }
+    if (req.query.type === 'hs') {
+        Formatado.sort(function (x, y) {
             return y.fights - x.fights;
           })
         const query = Formatado.slice(limite2, inicio);

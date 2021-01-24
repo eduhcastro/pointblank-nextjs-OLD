@@ -33,9 +33,9 @@ const PageGet = (e) =>  {
      */
     
     
-    player.renderPrize = function (player_name, rank, exp, partidas, vitorias, derrotas, id) {
+    player.renderPrize = function (player_name, rank, exp, partidas, vitorias, derrotas, head, kill, id) {
       if(player_name.length > 0){
-    
+        var Hs = kill != 0 ? Math.round((head * 100) / kill, 1): 0;
       var tpl = "";
       tpl += '<tr>';
       tpl +=   '<td class="rank">'+id+'';
@@ -46,9 +46,11 @@ const PageGet = (e) =>  {
       tpl +=          ''+player_name+'</a>';
       tpl +=       '</td>';
       tpl +=     '<td class="rank_class">';
-      tpl +=       '<img src="/Front/Rank/icon/'+rank+'.png">'+NameRank(parseInt(rank))+'</td>';
+      tpl +=       '<img src="/Front/Rank/icon/'+rank+'.png">'+new FuncoesWebsite().NameRanking(parseInt(rank))+'</td>';
       if(metodo == 'matchs'){
         tpl +=         '<td class="gray">'+partidas+' ('+vitorias+ '/'+derrotas+')</td>';
+      }else if(metodo == 'hs'){ 
+        tpl +=         '<td class="gray">'+head+' ('+Hs+'%)</td>';
       }else{
         tpl +=         '<td class="gray">'+NovoNumero(exp)+'</td>';
       }
@@ -73,6 +75,8 @@ const PageGet = (e) =>  {
           item.fights,
           item.fights_win,
           item.fights_lost,
+          item.headshots_count,
+          item.kills_count,
           id++
       );
     })};

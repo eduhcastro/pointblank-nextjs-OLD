@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import {MyHeader,MyFooter,InfoLeft,MyMenu,Layout} from '../../components/Componente.HeaderModules'
 import {UserExp} from '../../components/Componente.RankModules'
-import {ExpList,PaginacaoUsers,ListPages} from '../../components/Componente.HeaderReact'
+import {HeadList,PaginacaoUsers,ListPages} from '../../components/Componente.HeaderReact'
 
 export default function Individual() {
   return (
     <>
-<MyHeader/>
+  <MyHeader/>
 <div id="layer_reg"></div>
 <div id="wrap">
    <div className="GNB">
@@ -29,15 +29,15 @@ export default function Individual() {
          <div className="sub_contents_pnone">
             <div className="sub_tab_many_line">
                <ul className="sub_tab_many sub_tab_four <!--sub_tab_three-->">
-                  <li className="last_on"><a href="#!" className="btn">EXP</a></li>
+                  <li className="last">
+                     <Link href="/ranking/individualexp">
+                     <a className="btn">EXP</a></Link>
+                  </li>
                   <li className="first">
-                     <Link href="/ranking/individualmatchs" >
+                     <Link href="/ranking/individualmatchs">
                      <a className="btn">MATCHS</a></Link>
                   </li>
-                  <li className="basic">
-                     <Link href="/ranking/individualhs">
-                     <a className="btn">HEADSHOT</a></Link>
-                  </li>
+                  <li className="basic_on"><a href="#!" className="btn">HEADSHOT</a></li>
                </ul>
             </div>
             <div className="cont_p30">
@@ -53,11 +53,11 @@ export default function Individual() {
                         <th>Ranking</th>
                         <th>Character</th>
                         <th>Rank</th>
-                        <th className="last">XP</th>
+                        <th className="last">HeadShots</th>
                      </tr>
                   </thead>
                   <tbody id="rankinglist">
-                     <ExpList/>
+                     <HeadList/>
                   </tbody>
                </table>
                <PaginacaoUsers/>

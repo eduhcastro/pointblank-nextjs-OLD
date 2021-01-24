@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import {TabShow} from '../components/Componente.RankModules'
-import {Individual, SecundList, IndividualClan, SecundListClan} from '../components/Componente.HeaderReact'
+import {TabShow} from './Componente.RankModules'
+import {Individual, SecundList, IndividualClan, SecundListClan} from './Componente.HeaderReact'
+import {CloseDiv} from './Componente.Load'
+
 
 function MyHeader(){
-    return <Head><meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+    return <Head><meta httpEquiv="Content-Type" content="text/html; charSet=UTF-8" />
 	<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 	<meta httpEquiv="pragma" content="no-cache"/>
 	<meta httpEquiv="cache-control" content="no-cache"/>
@@ -60,13 +62,35 @@ function MyFooter(){
 
 function InfoLeft(){
     return <div className="LNB">
-	<div className="section_common">
-	   <div className="gamestart ">
-		  <div className="bg"></div>
-		  <div className="btn_default"></div>
-		  <a href="/download/games/download.do" className="btn_gamestart">ÜCRETSİZ İNDİR</a>
-	   </div>
-	</div>
+		<script src="/Base/start/Script2.js" type="text/javascript" charSet="utf-8"></script>
+		<script src="/Base/start/Script.js" type="text/javascript" charSet="utf-8"></script>
+		<div className="section_common">
+   <div className="gamestart ">
+      <div className="bg">
+         <div className="img" style={{display: "none", top: "0px", left: "0px"}}></div>
+         <div className="piece1" style={{display: "none"}}></div>
+         <div className="piece2" style={{display: "none"}}></div>
+         <div className="piece3" style={{display: "none"}}></div>
+         <div className="piece4" style={{display: "none"}}></div>
+         <div className="piece5" style={{display: "none"}}></div>
+         <div className="piece6" style={{display: "none"}}></div>
+         <div className="bullet" style={{display: "none"}}></div>
+         <div className="txt" style={{display: "none", top: "44px", left: "18px"}}></div>
+         <div className="over" style={{display: "none"}}>
+            <div className="piece1" style={{display: "none", left: "10.9385px", top: "80px", opacity: "0"}}></div>
+            <div className="piece2" style={{display: "none", left: "142.838px", top: "80px", opacity: "0"}}></div>
+            <div className="piece3" style={{display: "none", left: "212.197px", top: "80px", opacity: "0"}}></div>
+            <div className="piece4" style={{display: "none", left: "163.658px", top: "80px", opacity: "0"}}></div>
+            <div className="piece5" style={{display: "none", left: "148.146px", top: "80px", opacity: "0"}}></div>
+            <div className="piece6" style={{display: "none", left: "32.674px", top: "80px", opacity: "0"}}></div>
+            <div className="dust" style={{display: "none", opacity: "0.256542", left: "17.4346px"}}></div>
+         </div>
+         <div className="etc" style={{display: "none"}}></div>
+      </div>
+      <div className="btn_default" style={{display: "block"}}></div>
+      <Link href="/download"><a className="btn_gamestart">play for free</a></Link>
+   </div>
+</div>
 	<div className="login">
 	   <p className="register"><a href="/registrar" className="btn" target="_blank"> REGISTER</a></p>
 	   <p className="sso"><a href="#!" className="btn">LOGIN</a></p>
@@ -78,7 +102,7 @@ function InfoLeft(){
       <li><a href="https://www.tamgame.com/support/faq/list.do?service=3"><img src="/Front/Commom/lnb_cs_faq.jpg"/></a></li>
    </ul>
    <div className="ranking">
-      <p className="main_tit"><a href="/ranking/individual/list.do">RANKING</a><span className="more"><a href="/ranking/individual/list.do"><img src="/Front/Bottons/btn_tit_more_rotate.png"/></a></span></p>
+      <p className="main_tit"><Link href="/ranking/individualexp"><a>RANKING</a></Link><span className="more"><Link href="/ranking/individualexp"><a><img src="/Front/Bottons/btn_tit_more_rotate.png"/></a></Link></span></p>
       <div id="tab_Bire">
          <ul className="tab_tit">
             <li className="tit_first_on">Individual</li>
@@ -109,7 +133,7 @@ function MyMenu(){
 	return <div className="gnb_menu">
 	<ul>
 	   <li className="menu">
-		  <p className="depth1_1st"><Link href="/news/notice/list.do"><a  className="depth1_on"><span>News</span></a></Link></p>
+		  <p className="depth1_1st"><Link href="/News/News"><a  className="depth1_on"><span>News</span></a></Link></p>
 		  <ul className="depth2">
 		  <li><Link href="/News/Patch"><a>Patchs</a></Link></li>
 		   <li><Link href="/News/News"><a>News</a></Link></li>
@@ -144,4 +168,71 @@ function MyMenu(){
  </div>
 }
 
-export {MyHeader,MyFooter,InfoLeft,MyMenu}
+function Layout(){
+	return (
+		<div id="Layout" className="layer_popup">
+   <div className="layer_bg_dim"></div>
+   <div id="ranking_info" className="layer_pop_layout_w550">
+      <div className="pop_top">
+         <p className="tit" id="layer_Nickname"></p>
+         <p className="btn"><a href="#!" onClick={CloseDiv} className="close_btn"><img src="/Front/Commom/btn_close_pop.png"/></a></p>
+      </div>
+      <div className="pop_cont">
+         <table className="pop_board">
+            <colgroup>
+               <col style={{width:"160px"}}/>
+               <col style={{width:"auto"}}/>
+            </colgroup>
+            <thead>
+               <tr>
+                  <th colSpan="2" className="sub_stit">
+                     <p className="stit">Character</p>
+                  </th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td className="tit">XP</td>
+                  <td id="layer_UserExp"></td>
+               </tr>
+               <tr>
+                  <td className="tit">RANK</td>
+                  <td id="layer_UserRank"></td>
+               </tr>
+               <tr>
+                  <td className="tit">KDA</td>
+                  <td id="layer_WinRate"></td>
+               </tr>
+                </tbody>
+                <thead>
+                <tr>
+                    <th colSpan="2" className="sub_stit"><p className="stit">Game Info</p></th>
+                </tr>
+                </thead>
+                <tbody>
+               <tr>
+                  <td className="tit">KILL</td>
+                  <td id="layer_UserKill"></td>
+               </tr>
+               <tr>
+                  <td className="tit">DEATH</td>
+                  <td id="layer_UserDeath"></td>
+               </tr>
+               <tr>
+                  <td className="tit">WIN</td>
+                  <td id="layer_ClanName"></td>
+               </tr>
+               <tr>
+                  <td className="tit">LOSERS</td>
+                  <td id="layer_ClanName"></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
+	)
+}
+
+
+export {MyHeader,MyFooter,InfoLeft,MyMenu,Layout}

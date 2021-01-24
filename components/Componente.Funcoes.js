@@ -136,6 +136,9 @@
         if(Explode[1] == 'individualmatchs'){
           return 'matchs'
         }
+        if(Explode[1] == 'individualhs'){
+            return 'hs'
+        }
         return 'individual'
         }catch (e){
           return 'individual'
