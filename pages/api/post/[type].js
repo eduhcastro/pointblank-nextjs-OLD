@@ -1,4 +1,34 @@
 import DatabaseTs from '../../../components/DataBase/Accounts.ts'
+import { useCookies } from "react-cookie"
+
+function DeuTudoErrado(MatrixFalsa){
+    if(MatrixFalsa.length <= 61){
+      var IDs = new Object();
+      IDs['status'] = false
+      IDs['code'] = 203
+      return IDs
+    }
+      const S = MatrixFalsa.split('{"UserDetail":[{"user":"')
+      if(S[1] === undefined){
+        var IDs = new Object();
+        IDs['status'] = false
+        IDs['code'] = 201
+        return IDs
+      }
+      const Usuario = S[1].split('","rank":') // USUARIO[0]
+      const Rank = Usuario[1].split(',"Exp":') // RANK[0]
+      const Exp = Rank[1].split(',"Nick":"') // EXP 0 
+      const Nick = Exp[1].split('"}]')
+      var IDs = new Object();
+      IDs['Usuario'] = Usuario[0]
+      IDs['Rank'] = Rank[0]
+      IDs['Exp'] = Exp[0]
+      IDs['Nick'] = Nick[0]
+      IDs['status'] = true
+      IDs['code'] = 0
+      return IDs;
+  }
+
 export const config = {
     api: {
         externalResolver: true,
@@ -43,7 +73,33 @@ export default async (req, res) => {
             res.end()
             return
         }
-    } else {
+        if (req.query.type === 'login') {
+            
+            async function LoginApi(user,pass,token){
+                const Forumalario = new URLSearchParams();
+                Forumalario.append('usuario', user);
+                Forumalario.append('senha', pass);
+                Forumalario.append('chave', token);
+                const Api = await fetch('https://www.fpd-pb.com/Web/checkLogin.php', {
+                  method: 'POST',
+                  body: Forumalario
+                })
+                const Resultado = await Api.text()
+                return Resultado
+        }
+                const Final = DeuTudoErrado(await LoginApi(req.body.usuario,req.body.senha,'asdasdasds'))
+                res.status(200).json(Final)
+                res.end()
+
+              /**
+              *  ABAIXO FAZER O SISTEMA DE LOGIN DO SITE
+              * @param {string} UserLogged
+              * @param {number} UserRank
+              * @param {number} UserEXP
+              * ESSE RESULTADO VOLTARAR PARA O USUARIO EM INSTANTES,SEM REDIRECIONAMENTO SE FOR FALSE 
+              *                  RESPOSTA AO CLIENTE BASEADA VALOR DO CODE                         */
+            }
+    }else{
         res.status(200).json({
             result: false
         })
