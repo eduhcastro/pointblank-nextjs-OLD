@@ -1,8 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import React from 'react';
 import {TabShow} from './Componente.RankModules'
 import {Individual, SecundList, IndividualClan, SecundListClan} from './Componente.HeaderReact'
-import {CloseDiv} from './Componente.Load'
+import {CloseDiv, Logout, Loged} from './Componente.Load'
+import FuncoesWebsite from './Componente.Funcoes'
+
 
 
 function MyHeader(){
@@ -60,7 +63,8 @@ function MyFooter(){
 </div>
 } 
 
-function InfoLeft(){
+class InfoLeft extends React.Component {
+    render(){
     return <div className="LNB">
 		<script src="/Base/start/Script2.js" type="text/javascript" charSet="utf-8"></script>
 		<script src="/Base/start/Script.js" type="text/javascript" charSet="utf-8"></script>
@@ -91,10 +95,7 @@ function InfoLeft(){
       <Link href="/download"><a className="btn_gamestart">play for free</a></Link>
    </div>
 </div>
-	<div className="login">
-	   <p className="register"><a href="/registrar" className="btn" target="_blank"> REGISTER</a></p>
-	   <p className="sso"><a href="#!" className="btn">LOGIN</a></p>
-	</div>
+<Loged/>
 	<ul className="cs">
       <li className="m_r2 m_b2"><a href="/guide/intro.do"><img src="/Front/Commom/lnb_cs_first.jpg"/></a></li>
       <li className="m_b2"><a href="#!"><img src="/Front/Commom/lnb_cs_how.jpg"/></a></li>
@@ -127,6 +128,7 @@ function InfoLeft(){
       </div>
    </div>
 </div>
+   }
 } 
 
 function MyMenu(){
@@ -236,3 +238,4 @@ function Layout(){
 
 
 export {MyHeader,MyFooter,InfoLeft,MyMenu,Layout}
+

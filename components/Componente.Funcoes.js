@@ -123,6 +123,10 @@
                 return 'Commander';
             case 51:
                 return 'HERO';
+            case 52:
+                return 'New Rank';
+            case 53:
+                return 'Game Master';
         }
     }
     

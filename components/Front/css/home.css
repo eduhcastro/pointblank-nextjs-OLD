@@ -41,7 +41,6 @@ body {
 	line-height: 20px;
 	letter-spacing: -.2px;
 	font-family: 'Open Sans', Arial, sans-serif;
-	background: #080f13
 }
 
 h1,
@@ -423,15 +422,18 @@ strong {
 
 @charset "utf-8";
 #wrap {
-	background: url(/Front/Imgs/10yil_tr.jpg) top center no-repeat
+	background: url(/Front/Imgs/10yil_tr.jpg) top center no-repeat;
+	background-color: #081013;
 }
 
 #wrap_single {
-	background: url(/Front/Imgs/10yil_tr.jpg) top center no-repeat
+	background: url(/Front/Imgs/10yil_tr.jpg) top center no-repeat;
+	background-color: #081013;
 }
 
 #wrap_single.password {
-	background: url(/Front/Commom/pbtr_bg_all.jpg) top center no-repeat
+	background: url(/Front/Commom/pbtr_bg_all.jpg) top center no-repeat;
+	background-color: #081013;
 }
 
 a.btn {
