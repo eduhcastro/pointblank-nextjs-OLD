@@ -2,29 +2,25 @@ import Link from 'next/link'
 import React from 'react';
 import HeaderMember from '../../components/Member/Componente.Header'
 import AuthNow from '../../components/Member/Componente.Auth'
-import { Cookies } from 'react-cookie';
 import jwt from 'jsonwebtoken';
-const jwtSecret = "cAsTroMs20216for2F0reVer";
-const cookies = new Cookies();
+const jwtSecret = process.env.PRIVATE_JWT;
+
+async function Status(Obj){
+   try{
+      var Decodado = jwt.verify(Obj, jwtSecret);
+      window.location.href = "/";
+   }catch (e){
+     localStorage.clear();
+   }
+ }
 
 
 export default class Auth extends React.Component {
-   
+    componentDidMount() {
+      const Token = localStorage.getItem('Autorizacao') || 'OFF';
+      Status(Token)
+    }
 render(){
-   const Token = cookies.get('TOKENAUTH') || null
-   if(Token != null || Token != undefined || Token != ''){
-   try {
-   var decoded = jwt.verify(Token, jwtSecret);
-   if(decoded.userID != null ||  decode.userID != undefined){
-       return(
-         window.location.href = "/"
-       )
-   }
-}catch (e){
-   cookies.set("TOKENAUTH", '', {
-      path: "/",
-    });
-}}
     return (
         <>
         <HeaderMember/>

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-const jwtSecret = "cAsTroMs20216for2F0reVer";
+const jwtSecret = process.env.PRIVATE_JWT;
 
 
 export default async (req, res) => {
