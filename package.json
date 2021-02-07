@@ -18,6 +18,7 @@
     "cookie": "^0.4.1",
     "cookie-cutter": "^0.2.0",
     "cookies": "^0.8.0",
+    "cryptr": "^6.0.2",
     "database-js": "^3.0.10",
     "database-js-json": "^1.2.1",
     "dgram": "^1.0.1",
@@ -35,6 +36,7 @@
     "react": "17.0.1",
     "react-cookie": "^4.0.3",
     "react-dom": "17.0.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "secure-web-storage": "^1.0.2"
   }
 }
