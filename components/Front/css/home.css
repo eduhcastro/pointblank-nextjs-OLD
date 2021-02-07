@@ -991,7 +991,7 @@ a.btn {
 .LNB .logout .my_info {
 	height: 192px;
 	padding: 20px 15px 0;
-	background: rgba(0, 0, 0, 0.5) url(/Front/Commom/lnb_logout_bg.png) no-repeat
+	background: rgba(0, 0, 0, 0.5)
 }
 
 .LNB .logout .my_info .my_nick {

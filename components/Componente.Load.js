@@ -1,9 +1,11 @@
 import jwt from 'jsonwebtoken';
 import React, { Component } from 'react';
-import Cookies from 'js-cookie';
-const jwtSecret = "cAsTroMs20216for2F0reVer";
-const TokenCookie = Cookies.get('TOKENAUTH')
+const jwtSecret = process.env.PRIVATE_JWT;
 import FuncoesWebsite from './Componente.Funcoes'
+
+
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr(process.env.PRIVATE_PTS);
 
 
 const CloseDiv = (e) =>  {
@@ -30,6 +32,15 @@ const Logout = (e) =>{
     Teste()
 }
 
+async function Status(Obj){
+  try{
+    var Decodado = jwt.verify(Obj, jwtSecret);
+    return 'DEU BOM'
+  }catch (e){
+    localStorage.clear();
+    return e;
+  }
+}
 
 
 class Loged extends Component {
@@ -45,9 +56,11 @@ class Loged extends Component {
       }
       
       componentDidMount() {
+        const Token = localStorage.getItem('Autorizacao') || 'OFF';
+        Status(Token)
         this.setState({
             nickname: localStorage.getItem('userNick') || null,
-            id:  localStorage.getItem('userID') || null,
+            id:   localStorage.getItem('userID') || null,
             exp:  localStorage.getItem('userEXP') || null,
             rank:  localStorage.getItem('userRank') || null,
         });
@@ -60,7 +73,7 @@ class Loged extends Component {
          <div className="logout">
                  <ul className="my_info">
                      <li className="grade">
-                         <p><span>Nick</span> {this.state.id} </p>
+                         <p><span>Nick</span> {this.state.nickname || cryptr.decrypt(this.state.id)} </p>
                          <p><span>Rank</span> {new FuncoesWebsite().NameRanking(parseInt(this.state.rank))} <img src={img}/></p>
                          <p><span>TG</span> 0</p>
                          <p><span>Bonus TG</span> 0</p>
