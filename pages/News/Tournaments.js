@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {MyHeader,MyFooter,InfoLeft,MyMenu} from '../../components/Componente.HeaderModules'
-import {NewsList} from '../../components/Componente.News'
+import {TournamentsList} from '../../components/Componente.News'
 export default function Patch() {
   return (
     <>
@@ -20,10 +20,10 @@ export default function Patch() {
         <div className="substance">
             <InfoLeft/>
         <div className="contents">
-        <div className="sub_title">NEWS</div>
+        <div className="sub_title">Tournaments</div>
         <div className="sub_contents">
       <ul className="bbs_list_news">
-         <NewsList/>
+      <TournamentsList/>
          </ul>
       <ul className="bbs_paging">
          <li className="first"><a href="/Noticia?id=1"><span>First</span></a></li>

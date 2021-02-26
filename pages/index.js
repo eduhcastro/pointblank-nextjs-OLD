@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import {MyHeader,MyFooter,InfoLeft,MyMenu} from '../components/Componente.HeaderModules'
+import {AllNews,Tournament,SimpleSlider} from '../components/Componente.News';
 export default function Home() {
   return (
     <>
@@ -21,83 +22,43 @@ export default function Home() {
       <InfoLeft/>
       <div className="contents">
          <div className="main_banner">
+         <link
+  rel="stylesheet"
+  type="text/css"
+  charSet="UTF-8"
+  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+/>
             <div className="main_slide">
-               <div className="item">
-                  <Link  href="https://pb.tamgame.com/news/eventnote/view.do?page=1&evttype=0&idx=1508">
-                  <a target='_blank'><img src="/Front/Announcers/katilim_rb_TR.jpg" alt="Ödülleri İle Dolu Dolu Katılım Etkinliği"/></a></Link>
-               </div>
+              <SimpleSlider/>
             </div>
+            <link rel="stylesheet" href="/Base/css/owl.carousel.min.css" media="screen"/>
             <div className="main_news">
                <div className="news">
                   <p className="main_tit">
                      <Link  href="/news/notice/list.do">
-                     <a style={{textTransform: "uppercase"}}>Haberler</a></Link>
+                     <a style={{textTransform: "uppercase"}}>NEWS</a></Link>
                      <span className="more">
                         <Link  href="/news/notice/list.do">
                         <a><img src="/Front/Bottons/btn_tit_more.png"/></a></Link>
                      </span>
                   </p>
-                  <ul className="special">
-                     <li className="thumb">
-                        <p className="bul"><img src="/Front/Commom/bul_thumb_news.png"/></p>
-                        <p>
-                           <Link href="/Noticias">
-                           <a><img src="/Front/Announcers/ViewImagedo0.jpg"/></a></Link>
-                        </p>
-                     </li>
-                     <li className="cont">
-                        <p className="title">
-                           <Link href="/Noticias">
-                           <a>Aralık Ayı Kredi Kartı İle Ödeme Etkinliği</a></Link>
-                        </p>
-                        <p className="txt">
-                           <Link href="/Noticias">
-                           <a>16.12.2020-04.01.2021 tarihleri arasında Kredi Kartı ile yükleme yapan herkes birbirinden güzel kasaların sahibi oluyor!</a></Link>
-                        </p>
-                        <p className="date">16 Aralık, 2020</p>
-                     </li>
-                  </ul>
-                  <ul className="list">
-                     <li>
-                        <Link href="/Noticias">
-                        <a>Point Blank Advanced Cup Kayıtları Başladı!</a></Link><span>14 Aralık, 2020</span>
-                     </li>
-                     <li>
-                        <Link href="/Noticias">
-                        <a>Aralık Ayı İlk Kez Ödeme Etkinliği</a></Link><span>01 Aralık, 2020</span>
-                     </li>
-                     <li>
-                        <Link href="/Noticias">
-                        <a>Aralık Ayı E-Pin ile Yükle Kazan Etkinliği</a></Link><span>01 Aralık, 2020</span>
-                     </li>
-                  </ul>
+                  <AllNews/>
                </div>
                <div className="esports">
                   <p className="main_tit">
                      <Link href="http://esports.tamgame.com">
-                     <a target="_blank">TURNUVA HABERLERİ</a></Link>
+                     <a target="_blank">E-SPORTS</a></Link>
                      <span className="more">
                         <Link href="/Noticias">
                         <a><img src="/Front/Bottons/btn_tit_more.png"/></a></Link>
                      </span>
                   </p>
-                  <ul>
-                     <li className="thumb">
-                        <Link href="https://esports.tamgame.com/html/Notice/NoticeView.php?noticeIDX=999">
-                        <a><img src="/Front/Announcers/ViewImagedo3.jpg"/></a></Link>
-                     </li>
-                     <li className="cont">
-                        <p className="title">
-                           <Link href="https://esports.tamgame.com/html/Notice/NoticeView.php?noticeIDX=999">
-                           <a>PBAC Kural Paketi</a></Link>
-                        </p>
-                        <p className="date">15 Aralık, 2020</p>
-                        <p className="txt">
-                           <Link href="https://esports.tamgame.com/html/Notice/NoticeView.php?noticeIDX=999">
-                           <a>Point Blank Advanced Cup Kural Paketi</a></Link>
-                        </p>
-                     </li>
-                  </ul>
+                 <Tournament/>
                </div>
             </div>
             <div className="main_event">

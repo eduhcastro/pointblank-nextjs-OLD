@@ -1,7 +1,34 @@
 import DatabaseTs from '../../../components/DataBase/Accounts.ts'
-import { useCookies } from "react-cookie"
 
 function DeuTudoErrado(MatrixFalsa){
+    if(MatrixFalsa.length <= 61){
+      var IDs = new Object();
+      IDs['status'] = false
+      IDs['code'] = 203
+      return IDs
+    }
+      const S = MatrixFalsa.split('{"UserDetail":[{"user":"')
+      if(S[1] === undefined){
+        var IDs = new Object();
+        IDs['status'] = false
+        IDs['code'] = 201
+        return IDs
+      }
+      const Usuario = S[1].split('","rank":') // USUARIO[0]
+      const Rank = Usuario[1].split(',"Exp":') // RANK[0]
+      const Exp = Rank[1].split(',"Nick":"') // EXP 0 
+      const Nick = Exp[1].split('"}]')
+      var IDs = new Object();
+      IDs['Usuario'] = Usuario[0]
+      IDs['Rank'] = Rank[0]
+      IDs['Exp'] = Exp[0]
+      IDs['Nick'] = Nick[0]
+      IDs['status'] = true
+      IDs['code'] = 0
+      return IDs;
+  }
+
+  function DeuTudoErradoPass(MatrixFalsa){
     if(MatrixFalsa.length <= 61){
       var IDs = new Object();
       IDs['status'] = false
@@ -99,6 +126,39 @@ export default async (req, res) => {
               * ESSE RESULTADO VOLTARAR PARA O USUARIO EM INSTANTES,SEM REDIRECIONAMENTO SE FOR FALSE 
               *                  RESPOSTA AO CLIENTE BASEADA VALOR DO CODE                         */
             }
+            if (req.query.type === 'newpassword') {
+                async function NewPass(pass,id){
+                    const Forumalario = new URLSearchParams();
+                    Forumalario.append('newpass', pass);
+                    Forumalario.append('id', id);
+                    const Api = await fetch('https://www.fpd-pb.com/Web/NewPassword.php', {
+                      method: 'POST',
+                      body: Forumalario
+                    })
+                    const Resultado = await Api.text()
+                    return Resultado
+            }
+                    const Final = DeuTudoErradoPass(await NewPass(req.body.newpassword,req.body.id))
+                    res.status(200).json(Final)
+                    res.end()
+                }
+
+                if (req.query.type === 'security') {
+                    async function NewPass(pass,id){
+                        const Forumalario = new URLSearchParams();
+                        Forumalario.append('newpass', pass);
+                        Forumalario.append('id', id);
+                        const Api = await fetch('https://www.fpd-pb.com/Web/NewSecurity.php', {
+                          method: 'POST',
+                          body: Forumalario
+                        })
+                        const Resultado = await Api.text()
+                        return Resultado
+                }
+                        const Final = DeuTudoErradoPass(await NewPass(req.body.newpassword,req.body.id))
+                        res.status(200).json(Final)
+                        res.end()
+                    }
     }else{
         res.status(200).json({
             result: false
