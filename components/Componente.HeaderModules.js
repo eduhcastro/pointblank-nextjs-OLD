@@ -139,6 +139,7 @@ function MyMenu(){
 		  <ul className="depth2">
 		  <li><Link href="/News/Patch"><a>Patchs</a></Link></li>
 		   <li><Link href="/News/News"><a>News</a></Link></li>
+         <li><Link href="/News/Tournaments"><a>Tournaments</a></Link></li>
 		  </ul>
 	   </li>
 	   <li className="menu">

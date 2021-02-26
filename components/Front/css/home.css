@@ -991,7 +991,7 @@ a.btn {
 .LNB .logout .my_info {
 	height: 192px;
 	padding: 20px 15px 0;
-	background: rgba(0, 0, 0, 0.5)
+	background: rgba(0,0,0,0.5) url(/Front/Commom/lnb_logout_bg.png) no-repeat
 }
 
 .LNB .logout .my_info .my_nick {
@@ -7872,4 +7872,26 @@ a.btn {
 	font-style: italic;
 	text-align: center;
 	background: #ddd url(/Front/Commom/calendar_title_line.gif) repeat-x left top
+}
+
+.ButtonMy{
+	display: inline-block;
+	width: 30%;
+    font-size: 18px;
+    color: #fff;
+    line-height: 58px;
+    background: #f24f32;
+    transition: .2s ease-out;
+	top: 99px;
+	left: 30%;
+    position: relative;
+
+}
+
+.InputMy{
+	float: left;
+    font-size: 13px;
+    color: #999;
+    height: 20px;
+    line-height: 20px;
 }
