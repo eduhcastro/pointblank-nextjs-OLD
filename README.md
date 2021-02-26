@@ -1,4 +1,4 @@
-## Procuro russa ou alemanzinha branquinha
+## Procuro russa ou alemanzinha
 
 favor chamar no whatszap tenho muito a oferecer
 
