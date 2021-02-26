@@ -37,3 +37,27 @@ function setRankDetailView(isView, data, mickname) {
     }
     
 }
+
+$(document).ready( function() {
+    $owlContainer = $('.main_slide');
+    $owlSlides = $owlContainer.children('div');
+    if ($owlSlides.length > 1) {
+        $owlContainer.owlCarousel({
+            animateOut: 'fadeOut',
+            navigation : true,
+            navText: ["", ""],
+            loop:true,
+            slideSpeed : 300,
+            autoplay:true,
+            autoplayTimeout:5000,
+            autoplayHoverPause:true,
+            items: 1,
+            paginationSpeed : 400,
+            mouseDrag: true,
+            singleItem:true,
+                                        dots: !0
+        });
+    } else {
+        
+    }
+});
