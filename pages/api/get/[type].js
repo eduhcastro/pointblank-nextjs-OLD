@@ -28,10 +28,13 @@ export default async (req, res) => {
         return
     }
     var PExp = query[0].exp
-    var PRank = query[0].rank
+    var Kda = query[0].kills_count+query[0].deaths_count;
+    console.log(Math.round(query[0].kills_count/(Kda) * 100))
+    var KKDA =  Kda != 0 ? Math.round(query[0].kills_count/(Kda) * 100) : 0;
+    var WINRATE = query[0].fights != 0 ? Math.round((query[0].fights_win * 100) / query[0].fights, 1) : 0;
     res.status(200).json({
         success: true,
-        data: {Rank: PRank, Exp: PExp, WinCnt: "0", LoseCnt: "1", WinRate: "0", KillCnt: "2", DeathCnt: "3"},
+        data: {Rank: query[0].rank, Exp: PExp, WinCnt: query[0].fights_win, LoseCnt: query[0].fights_lost, WinRate: WINRATE, KillCnt: query[0].kills_count, DeathCnt: query[0].deaths_count, Kd: KKDA},
         message: ''
 
     });

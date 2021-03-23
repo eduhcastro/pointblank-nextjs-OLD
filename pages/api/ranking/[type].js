@@ -70,7 +70,7 @@ export default async (req, res) => {
     }
     if (req.query.type === 'matchs') {
         Formatado.sort(function (x, y) {
-            return y.headshots_count - x.headshots_count;
+            return y.fights - x.fights;
           })
         const query = Formatado.slice(limite2, inicio);
         console.log('2')
@@ -90,7 +90,7 @@ export default async (req, res) => {
     }
     if (req.query.type === 'hs') {
         Formatado.sort(function (x, y) {
-            return y.fights - x.fights;
+            return y.headshots_count - x.headshots_count;
           })
         const query = Formatado.slice(limite2, inicio);
         console.log('2')
