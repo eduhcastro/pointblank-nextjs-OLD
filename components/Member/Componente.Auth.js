@@ -26,26 +26,30 @@ const AuthNow = (e) =>{
     }
     async function Teste(){
     const Auth = await Login()
-    if(Auth.code === 201){
+    if(Auth.Resultado[0].code === 201){
         alert('Incorrect username or password')
         return
     }
-    if(Auth.code === 203){
+    if(Auth.Resultado[0].code === 203){
       alert('Sorry, we had a problem, please try again later.')
       return
     }
-    if(Auth.code === 0){
+    if(Auth.Resultado[0].code === 204){
+      alert('Sorry, we had a problem, please try again later.')
+      return
+    }
+    if(Auth.Resultado[0].code === 0){
       try{      
-        const token = jwt.sign({ "userID": Auth.Usuario, "userRank": Auth.Rank, "userEXP": Auth.Exp, "userNick" : Auth.Nick}, jwtSecret, { expiresIn: 3600 })
-        const userIDENC = cryptr.encrypt(Auth.Usuario);
+        const token = jwt.sign({ "userID": Auth.UserDetail[0].Usuario, "userRank": Auth.UserDetail[0].Rank, "userEXP": Auth.UserDetail[0].Exp, "userNick" : Auth.UserDetail[0].Nick}, jwtSecret, { expiresIn: 3600 })
+        const userIDENC = cryptr.encrypt(Auth.UserDetail[0].Usuario);
 
         window.location.href = "/";
         localStorage.setItem("Autorizacao", token)
-        localStorage.setItem("userNick", Auth.Nick)
+        localStorage.setItem("userNick", Auth.UserDetail[0].Nick)
         localStorage.setItem("userID", userIDENC)
-        localStorage.setItem("userRank", Auth.Rank)
-        localStorage.setItem("userEXP", Auth.Exp)
-        alert('Welcome ' + Auth.Usuario)
+        localStorage.setItem("userRank", Auth.UserDetail[0].Rank)
+        localStorage.setItem("userEXP", Auth.UserDetail[0].Exp)
+        alert('Welcome ' + Auth.UserDetail[0].Usuario)
         return
       }catch (e){
         console.log(e)

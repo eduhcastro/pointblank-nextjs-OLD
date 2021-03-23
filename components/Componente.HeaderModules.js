@@ -23,7 +23,7 @@ function MyHeader(){
   <script type="text/javascript" src="/Base/js/index1.js"> </script>
   <script type="text/javascript" src="/Base/js/index2.js"> </script>
   <script type="text/javascript" src="/Base/js/index3.js"> </script>
-  <script type="text/javascript" src="/Base/js/index4.js"> </script>
+  <script type="text/javascript" src="/Base/js/index4.js?v=2"> </script>
   </Head>
 } 
 
@@ -99,7 +99,7 @@ class InfoLeft extends React.Component {
 	<ul className="cs">
       <li className="m_r2 m_b2"><a href="/guide/intro.do"><img src="/Front/Commom/lnb_cs_first.jpg"/></a></li>
       <li className="m_b2"><a href="#!"><img src="/Front/Commom/lnb_cs_how.jpg"/></a></li>
-      <li className="m_r2"><a href="#!"><img src="/Front/Commom/lnb_cs_coupon.jpg"/></a></li>
+      <li className="m_r2"><Link  href="/member/pin"><a><img src="/Front/Commom/lnb_cs_coupon.jpg"/></a></Link></li>
       <li><a href="https://www.tamgame.com/support/faq/list.do?service=3"><img src="/Front/Commom/lnb_cs_faq.jpg"/></a></li>
    </ul>
    <div className="ranking">
@@ -227,7 +227,7 @@ function Layout(){
                </tr>
                <tr>
                   <td className="tit">LOSERS</td>
-                  <td id="layer_ClanName"></td>
+                  <td id="layer_LOSERSS"></td>
                </tr>
             </tbody>
          </table>

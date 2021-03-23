@@ -13,7 +13,7 @@ function HeaderMember(){
     <title>Point Blank Member Now</title>
     <link rel="stylesheet" href="/Base/css/member/app.css?id=23"/>
     <link rel="stylesheet" href="/Base/css/member/new-register.css?id=24"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossOrigin="anonymous"/>
     <script src="/Base/js/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossOrigin="anonymous"></script>
     <script type="text/javascript" src="/Base/js/member.js"> </script>
     </Head>

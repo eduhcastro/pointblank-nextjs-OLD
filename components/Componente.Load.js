@@ -319,7 +319,116 @@ if (!String.prototype.trim) {
   };
 }
 
+const CODECODE = (e) =>  {
+	var cpo = $("#couponno");
+	if (cpo.val().length < 3){
+		alert('Add a code first!')
+		return;
+	}
+	if(cpo.val().length < 16){
+		async function Coupon(code,id){
+			const formData = new URLSearchParams();
+			formData.append('code', code);
+			formData.append('user', id);
+			formData.append('method', "coupon");
+			const res = await fetch('/api/post/code', {
+				method: 'POST',
+				body: formData
+			  })
+			  const json = await res.json()
+			  return json
+		}
+
+		async function CouponActive(){
+			const Auth = await Coupon(cpo.val(),localStorage.getItem('userID'))
+			cpo.val("");
+			if(Auth.code === 101){
+				alert('Erro interno')
+				return
+			}
+			if(Auth.code === 102){
+				alert('Erro interno 2')
+				return
+			}
+			if(Auth.code === 103){
+				alert('Incorrect Coupon or Pin!')
+				return
+			}
+			if(Auth.code === 203){
+			  alert('Sorry, we had a problem, please try again later.')
+			  return
+			}
+			if(Auth.code === 204){
+				alert('Sorry, we had a problem, please try again later.')
+				return
+			  }
+			if(Auth.code === 0){
+			  try{      
+				$('#myitemslist tr:first').before(`<tr><td class="rank">${Auth.Details.ID}</td><td class="nick">${Auth.Details.Setup}</td><td class="rank_class">${Auth.Details.Value}</td><td class="gray">03/22/2021</td></tr>`);
+				alert('Done!')
+			  }catch (e){
+				console.log(e)
+				alert('error')
+				return
+			  }
+			}
+			return
+			}
+			CouponActive()
+	}
+	if(cpo.val().length == 16){
+		async function Pin(code,id){
+			const formData = new URLSearchParams();
+			formData.append('code', code);
+			formData.append('user', id);
+			formData.append('method', "pin");
+			const res = await fetch('/api/post/code', {
+				method: 'POST',
+				body: formData
+			  })
+			  const json = await res.json()
+			  return json
+		}
+
+		async function PinActive(){
+			const Auth = await Pin(cpo.val(),localStorage.getItem('userID'))
+			if(Auth.code === 101){
+				alert('Erro interno')
+				return
+			}
+			if(Auth.code === 102){
+				alert('Erro interno 2')
+				return
+			}
+			if(Auth.code === 103){
+				alert('Incorrect Coupon or Pin!')
+				return
+			}
+			if(Auth.code === 203){
+			  alert('Sorry, we had a problem, please try again later.')
+			  return
+			}
+			if(Auth.code === 204){
+				alert('Sorry, we had a problem, please try again later.')
+				return
+			  }
+			if(Auth.code === 0){
+			  try{      
+				$('#myitemslist tr:first').before(`<tr><td class="rank">${Auth.Details.ID}</td><td class="nick">${Auth.Details.Setup}</td><td class="rank_class">${Auth.Details.Value}</td><td class="gray">03/22/2021</td></tr>`);
+				alert('Done!')
+				return
+			  }catch (e){
+				console.log(e)
+				alert('error')
+				return
+			  }
+			}
+			return
+			}
+			PinActive()
+	}
+}
 
 
-export {CloseDiv, Logout, Loged, sendItMy}
+export {CloseDiv, Logout, Loged, sendItMy, CODECODE}
 

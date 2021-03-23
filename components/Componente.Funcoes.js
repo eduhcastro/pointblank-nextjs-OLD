@@ -1,3 +1,5 @@
+import { Tournament } from "./Componente.News"
+
  class FuncoesWebsite{
     NewNumber(Nmb){
         if(Nmb == null){
@@ -149,7 +151,19 @@
         }
       }
 
+      CategoryNews(obj){
+        switch (obj){
+            case 0:
+                return "/News/Notice/"
+                case 1:
+                    return "/News/Patch/"
+                    case 2:
+                   return  "FALTAFAZER"
+        }
+    }
 }
+
+   
 
 
 export default FuncoesWebsite

@@ -1,4 +1,7 @@
 import FuncoesWebsite from './Componente.Funcoes.js'
+function NovoNumero(Nmb){
+  return new Intl.NumberFormat('de-DE', { currency: 'EUR' }).format(Nmb)
+}
 
 const PageGet = (e) =>  {
     const trajeto = new FuncoesWebsite().ExplodeUrl(e.view.location.pathname)
@@ -10,12 +13,6 @@ const PageGet = (e) =>  {
           const json = await res.json()
           return json[0]
     }
-  
-
-    function NovoNumero(Nmb){
-      return new Intl.NumberFormat('de-DE', { currency: 'EUR' }).format(Nmb)
-    }
-    
 
     async function f1(pagen, metodo) {
       var x = await resolveAfter2Seconds(pagen);
@@ -106,11 +103,6 @@ const PageGet = (e) =>  {
           return json[0]
     }
   
-
-    function NovoNumero(Nmb){
-      return new Intl.NumberFormat('de-DE', { currency: 'EUR' }).format(Nmb)
-    }
-    
 
     async function f1(pagen) {
       var x = await resolveAfter2Seconds(pagen);
@@ -253,11 +245,12 @@ if(pagen == null){
  */
 
 
-player.renderPrize = function (player_name, rank, exp, partidas, vitorias, derrotas, id) {
+player.renderPrize = function (player_name, rank, exp, partidas, vitorias, derrotas, head, kill, id) {
   if(player_name.length > 0){
+    var Hs = kill != 0 ? Math.round((head * 100) / kill, 1): 0;
   var tpl = "";
   tpl += '<tr>';
-  tpl +=   '<td class="rank">Search';
+  tpl +=   '<td class="rank">'+id+'';
   tpl +=      '<p class="rank_same"></p>';
   tpl +=    '</td>';
   tpl +=      '<td class="nick">';
@@ -265,11 +258,13 @@ player.renderPrize = function (player_name, rank, exp, partidas, vitorias, derro
   tpl +=          ''+player_name+'</a>';
   tpl +=       '</td>';
   tpl +=     '<td class="rank_class">';
-  tpl +=       '<img src="/Front/Rank/icon/'+rank+'.png">'+ new FuncoesWebsite().NameRanking(parseInt(rank))+'</td>';
+  tpl +=       '<img src="/Front/Rank/icon/'+rank+'.png">'+new FuncoesWebsite().NameRanking(parseInt(rank))+'</td>';
   if(metodo == 'matchs'){
     tpl +=         '<td class="gray">'+partidas+' ('+vitorias+ '/'+derrotas+')</td>';
+  }else if(metodo == 'hs'){ 
+    tpl +=         '<td class="gray">'+head+' ('+Hs+'%)</td>';
   }else{
-    tpl +=         '<td class="gray">'+new FuncoesWebsite().NewNumber(exp)+'</td>';
+    tpl +=         '<td class="gray">'+NovoNumero(exp)+'</td>';
   }
   tpl +=      '</tr>';
   $("#rankinglist").append(tpl);
@@ -291,6 +286,8 @@ player.rank = function (items) {
       item.fights,
       item.fights_win,
       item.fights_lost,
+      item.headshots_count,
+      item.kills_count,
       id++
   );
     
